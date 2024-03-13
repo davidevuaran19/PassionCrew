@@ -1,0 +1,36 @@
+Tabella studenti
+
+
+CREATE TABLE Studenti (
+    IDStudente INT PRIMARY KEY,
+    Corso VARCHAR(50),
+    AnnoDelCorso INT,
+    Nome VARCHAR(50),
+    Cognome VARCHAR(50)
+);
+
+
+Tabella dispositivo
+
+
+CREATE TABLE Dispositivo (
+    IDDispositivo INT PRIMARY KEY,
+    Disponibilità BOOLEAN,
+    DataAssegnazione DATE,
+    DataRestituzione DATE,
+    IDStudente INT,
+    FOREIGN KEY (IDStudente) REFERENCES Studenti(IDStudente)
+);
+
+
+
+Tabella Caratteristiche
+
+
+CREATE TABLE CaratteristicheDispositivo (
+    TipoDispositivo VARCHAR(50),
+    Descrizione VARCHAR(255),
+    IDDispositivo INT,
+    PRIMARY KEY (TipoDispositivo, IDDispositivo),
+    FOREIGN KEY (IDDispositivo) REFERENCES Dispositivo(IDDispositivo)
+);
